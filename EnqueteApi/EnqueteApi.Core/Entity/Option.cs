@@ -8,7 +8,7 @@
 
         public string OptionDescription { get; set; }
 
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         public Poll Poll { get; set; }
     }

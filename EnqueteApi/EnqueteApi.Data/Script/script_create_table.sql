@@ -11,7 +11,7 @@ ALTER TABLE EnqueteApi.poll
 CREATE TABLE EnqueteApi.options(
   id integer IDENTITY not null,
   poll_id int not null,
-  amount int,
+  option_cout int,
   option_description varchar(40) not null 
  );
 
