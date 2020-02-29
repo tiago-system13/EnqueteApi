@@ -3,3 +3,11 @@
 ################################################################################
 
 /EnqueteApi/.vs/EnqueteApi
+/EnqueteApi/EnqueteApi/bin/Debug/netcoreapp2.2
+/EnqueteApi/EnqueteApi/obj
+/EnqueteApi/EnqueteApi.Core/bin/Debug/netcoreapp2.2
+/EnqueteApi/EnqueteApi.Core/obj
+/EnqueteApi/EnqueteApi.Data/bin/Debug/netcoreapp2.2
+/EnqueteApi/EnqueteApi.Data/obj
+/EnqueteApi/EnqueteApi.Test/bin/Debug/netcoreapp2.2
+/EnqueteApi/EnqueteApi.Test/obj
