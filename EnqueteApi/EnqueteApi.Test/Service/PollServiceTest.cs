@@ -5,8 +5,6 @@ using EnqueteApi.Test.Config;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EnqueteApi.Test.Service
 {
@@ -42,12 +40,26 @@ namespace EnqueteApi.Test.Service
         }
 
         [Test]
-        public void GetPollByIdNotFound()
+        public void GetPollByIdExceptionNotFound()
         {
             pollRepositorioMock.Setup(s => s.GetbyId(It.IsAny<int>())).Returns((Poll)null);
             
             var ex = Assert.Throws<ArgumentException>(() => pollServiceMock.Object.GetbyId(It.IsAny<int>()));
-            Assert.That(ex.Message, Is.EqualTo("Enquete não encontrada!"));         
+            Assert.That(ex.Message, Is.EqualTo("Enquete não encontrada!"));
+
+            pollRepositorioMock.Verify(p => p.Add(It.IsAny<Poll>()), Times.Never);
+        }
+
+        [Test]
+        public void AddPollSuccess()
+        {
+            var pollDbMock = PollTestMock.GetPollMock();
+            var result = pollServiceMock.Object.Add(pollDbMock);
+
+            Assert.NotNull(result);
+            Assert.AreEqual(pollDbMock.Id, result);
+
+            pollRepositorioMock.Verify(p => p.Add(It.IsAny<Poll>()), Times.Once);
         }
     }
 }

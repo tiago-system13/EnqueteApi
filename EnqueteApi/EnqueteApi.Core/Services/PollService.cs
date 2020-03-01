@@ -18,7 +18,15 @@ namespace EnqueteApi.Core.Services
 
         public int Add(Poll poll)
         {
-            throw new NotImplementedException();
+            if (poll.Options != null)
+            {
+                foreach (var option in poll.Options)
+                {
+                    option.Poll = poll;
+                }
+            }
+
+            return _pollRepository.Add(poll);            
         }
 
         public Poll GetbyId(int id)

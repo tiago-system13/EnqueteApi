@@ -4,6 +4,8 @@ namespace EnqueteApi.Core.Interfaces
 {
     public interface IOptionsRepository
     {
-        void Update(Option option);
+        Option Update(Option option);
+
+        Option GetbyId(int id);
     }
 }
