@@ -1,6 +1,7 @@
 ﻿using EnqueteApi.Core.Entity;
 using EnqueteApi.Core.Interfaces;
 using EnqueteApi.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace EnqueteApi.Data.Repository
@@ -16,12 +17,12 @@ namespace EnqueteApi.Data.Repository
 
         public Option GetbyId(int id)
         {
-            return _context.Options.FirstOrDefault(o=> o.Id == id);
+            return _context.Options.AsNoTracking().FirstOrDefault(o=> o.Id == id);
         }
 
-        public Option Update(Option option)
-        {
-            _context.Options.Update(option).CurrentValues.SetValues(option);
+        public Option Update(Option option, Option optinOld)
+        {         
+            _context.Options.Update(optinOld).CurrentValues.SetValues(option);
             _context.SaveChanges();
 
             return option;

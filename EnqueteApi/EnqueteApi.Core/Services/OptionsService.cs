@@ -14,23 +14,26 @@ namespace EnqueteApi.Core.Services
             _optionsRepository = optionsRepository;
         }
 
-        public Option Update(Option option)
+        public Option Update(int id)
         {
-            var optionDb = _optionsRepository.GetbyId(option.Id);
+            var optionDb = _optionsRepository.GetbyId(id);
 
             if (optionDb == null)
             {
                 throw new ArgumentException("Opção não encontrada!");
             }
 
-            optionDb.Count = CalculateVote(option);
+            var optionOld = new Option(optionDb);
 
-           return _optionsRepository.Update(optionDb);
+            optionDb.Count = CalculateVote(optionDb);
+
+           return _optionsRepository.Update(optionDb, optionOld);
         }
 
         private int CalculateVote(Option option)
         {
-            return (int)option.Count + 1;
+            
+            return option.Count == null ? 0 : (int)option.Count + 1;
         }
     }
 }

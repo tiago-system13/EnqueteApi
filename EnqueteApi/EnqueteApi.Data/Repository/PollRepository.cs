@@ -27,7 +27,15 @@ namespace EnqueteApi.Data.Repository
 
         public Poll GetbyId(int id)
         {
-            return _context.Polls.Include(p => p.Options).First(p=> p.Id == id);
+            return _context.Polls.AsNoTracking().Include(p => p.Options).FirstOrDefault(p=> p.Id == id);
+        }
+
+        public Poll Update(Poll poll, Poll pollOld)
+        {
+            _context.Polls.Update(pollOld).CurrentValues.SetValues(poll);
+            _context.SaveChanges();
+
+            return poll;
         }
     }
 }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using EnqueteApi.AutoMapper.Mapper;
 
 namespace EnqueteApi.AutoMapper
 {
-    public class AutoMapperProfile
+    public class AutoMapperProfile: Profile
     {
-
+        public AutoMapperProfile()
+        {
+            PollMapper.Map(this);            
+        }
     }
 }

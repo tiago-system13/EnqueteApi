@@ -11,5 +11,18 @@
         public int? Count { get; set; }
 
         public Poll Poll { get; set; }
+
+        public Option()
+        {
+
+        }
+
+        public Option(Option option)
+        {
+            Id = option.Id;
+            PollId = option.PollId;
+            OptionDescription = option.OptionDescription;
+            Count = option.Count;
+        }
     }
 }

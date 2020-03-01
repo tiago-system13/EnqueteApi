@@ -10,5 +10,19 @@ namespace EnqueteApi.Core.Entity
 
         public List<Option> Options { get; set; }
 
+        public int CountViews { get; set; }
+
+        public Poll()
+        {
+
+        }
+
+        public Poll(Poll poll)
+        {
+            Id = poll.Id;
+            PollDescription = poll.PollDescription;
+            Options = poll.Options;
+            CountViews = poll.CountViews;
+        }
     }
 }

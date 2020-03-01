@@ -1,7 +1,8 @@
 
 create table EnqueteApi.poll (
  id integer IDENTITY not null,
- poll_descriction varchar(40) not null
+ poll_description varchar(40) not null,
+ poll_count_views integer 
 );
 
 ALTER TABLE EnqueteApi.poll

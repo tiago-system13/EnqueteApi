@@ -19,6 +19,10 @@ namespace EnqueteApi.Data.Mapping
                 .HasColumnName("poll_description")
                 .HasMaxLength(30)
                 .IsRequired();
+
+            builder.Property(x => x.CountViews)
+                .HasColumnName("poll_count_views");
+                
         }
 
     }

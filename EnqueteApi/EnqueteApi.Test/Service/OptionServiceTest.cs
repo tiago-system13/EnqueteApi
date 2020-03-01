@@ -35,23 +35,23 @@ namespace EnqueteApi.Test.Service
 
             optionsRepositorioMock.Setup(s => s.GetbyId(It.IsAny<int>())).Returns((Option)null);
 
-            var ex = Assert.Throws<ArgumentException>(() => optionsServiceMock.Object.Update(optionsDbMock));
+            var ex = Assert.Throws<ArgumentException>(() => optionsServiceMock.Object.Update(optionsDbMock.Id));
             Assert.That(ex.Message, Is.EqualTo("Opção não encontrada!"));
-            optionsRepositorioMock.Verify(p => p.Update(It.IsAny<Option>()), Times.Never);
+            optionsRepositorioMock.Verify(p => p.Update(It.IsAny<Option>(), It.IsAny<Option>()), Times.Never);
         }
 
         [Test]
         public void VoteOptionsSuccess()
         {
             optionsDbMock.Count = 1;
-            optionsRepositorioMock.Setup(s => s.Update(It.IsAny<Option>())).Returns(optionsDbMock);
+            optionsRepositorioMock.Setup(s => s.Update(It.IsAny<Option>(), It.IsAny<Option>())).Returns(optionsDbMock);
 
             var optionsMock = OptionTestMock.GetOptionMock();
-            var result = optionsServiceMock.Object.Update(optionsMock);
+            var result = optionsServiceMock.Object.Update(optionsMock.Id);
 
             Assert.NotNull(result);
             Assert.True(result.Count == optionsDbMock.Count);
-            optionsRepositorioMock.Verify(p => p.Update(It.IsAny<Option>()), Times.Once);
+            optionsRepositorioMock.Verify(p => p.Update(It.IsAny<Option>(), It.IsAny<Option>()), Times.Once);
         }
     }
 }

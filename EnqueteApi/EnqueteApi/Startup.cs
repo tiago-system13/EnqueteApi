@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnqueteApi.AutoMapper;
 using EnqueteApi.Core.Constant;
+using EnqueteApi.Core.Interfaces;
+using EnqueteApi.Core.Services;
+using EnqueteApi.Core.Services.Interfaces;
 using EnqueteApi.Data.Context;
+using EnqueteApi.Data.Repository;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +33,7 @@ namespace EnqueteApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()
-             .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssembly(Assembly.Load("UDSAcaiApi")))
+             .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssembly(Assembly.Load("EnqueteApi")))
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                .AddJsonOptions(option => option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
                .ConfigureApiBehaviorOptions(options =>
@@ -49,7 +53,7 @@ namespace EnqueteApi
 
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1", new Info { Title = "Acai Service API", Version = "V1" });
+                s.SwaggerDoc("v1", new Info { Title = "Enquete Service API", Version = "V1" });
             });
             #endregion
 
@@ -65,6 +69,15 @@ namespace EnqueteApi
 
             #endregion
 
+            #region Dependency Injection
+
+            services.AddScoped<IPollRepository, PollRepository>();
+            services.AddScoped<IPollService, PollService>();
+
+            services.AddScoped<IOptionsRepository, OptionRepository>();
+            services.AddScoped<IOptionsService, OptionsService>();
+            #endregion
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
@@ -74,6 +87,12 @@ namespace EnqueteApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+                app.UseHttpsRedirection();
             }
 
             var supportedCultures = new[]
@@ -101,7 +120,7 @@ namespace EnqueteApi
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Açai API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Enquete API V1");
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
             });
 
