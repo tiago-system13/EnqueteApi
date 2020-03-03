@@ -28,7 +28,7 @@ Manual de montagem de ambiente de desenvolvimento.
 
 - Recomendo a IDE [Visual Studio](https://visualstudio.microsoft.com/pt-br/downloads/) (_2017 ou superior_) ou o editor de texto [Visual Studio Code](https://code.visualstudio.com/download)
 
-- A instalação do banco de dados Sql Server (_2014 ou superior_)
+- A instalação do banco de dados [Sql Server](https://docs.microsoft.com/pt-br/sql/getting-started/quick-start-installation-of-sql-server-2014?view=sql-server-2014) (_2014 ou superior_)
 
 > No  projeto EnqueteApi.Data existe a pasta Script que contém os scripts de criação de database, schema e tabelas.
   > Apos concluir a instalação do Sql Server é necessário executar esses scripts na seguinte ordem:
