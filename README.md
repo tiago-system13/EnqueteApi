@@ -23,14 +23,14 @@ Manual de montagem de ambiente de desenvolvimento.
 
 É necessário que você tenha instalado em sua máquina:
 
-- [.Net Core](https://dotnet.microsoft.com/download) (_2.2 ou superior_)
+- [.Net Core](https://dotnet.microsoft.com/download) (_2.2_)
   _A instalação deve anteceder os próximos passos ou pode ser feita através do visual studio installer caso opte por usar a IDE, adicionando o pacote .Net Core._
 
-- Recomendamos a IDE [Visual Studio](https://visualstudio.microsoft.com/pt-br/downloads/) (_2017 ou superior_) ou o editor de texto [Visual Studio Code](https://code.visualstudio.com/download)
+- Recomendo a IDE [Visual Studio](https://visualstudio.microsoft.com/pt-br/downloads/) (_2017 ou superior_) ou o editor de texto [Visual Studio Code](https://code.visualstudio.com/download)
 
 - A instalação do banco de dados Sql Server (_2014 ou superior_)
 
-> No  projeto EnqueteApi.Data existe a pasta Script que contém os scripts de criação de database, schema e criação da tabelas.
+> No  projeto EnqueteApi.Data existe a pasta Script que contém os scripts de criação de database, schema e tabelas.
   > Apos concluir a instalação do Sql Server é necessário executar esses scripts na seguinte ordem:
   1. script_create_data_base.sql
   2. script_create_schema.sql
@@ -44,13 +44,13 @@ Manual de montagem de ambiente de desenvolvimento.
 
 - **Caso esteja utilizando o Visual Studio**
 
-  > Clicando com o botão direito no projeto Enquete.Api e selecionando a opção propriedades, será aberto o menu de propriedades do projeto em questão, selecionando a opção depurar é possível encontrar as variáveis do ambiente.
+  > Clicando com o botão direito no projeto EnqueteApi e selecionando a opção propriedades, será aberto o menu de propriedades do projeto em questão, selecionando a opção depurar é possível encontrar as variáveis do ambiente.
   > Enquanto a variável `ASPNETCORE_ENVIRONMENT` estiver com o valor `Development`, o projeto irá iniciar com as configurações de desenvolvimento, caso o valor seja alterado as configurações de inicialização também sofrerão alterações. Valores possíveis para a variável são: `Development e Production`
   
 
 ## Execução
 
-O projeto Enquete está dividido em módulos, o módulo Enquete.Api é o ponto de entrada da aplicação, os módulos EnqueteApi.Core e EnqueteApi.Data são bibliotecas de classe e o EnqueteApi.Test é o projeto que contém os testes.
+O projeto Enquete está dividido em módulos, o módulo EnqueteApi é o ponto de entrada da aplicação, os módulos EnqueteApi.Core e EnqueteApi.Data são bibliotecas de classe e o EnqueteApi.Test é o projeto que contém os testes.
 
 **Atenção**
 
@@ -84,7 +84,7 @@ No projeto EnqueteApi, é necessário a criação de um arquivo `launchSettings.
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "production",
+        "ASPNETCORE_ENVIRONMENT": "Production",
         "DATABASE_CONNECTION_STRING": "Data Source=TIAGO-INFOR13;Initial Catalog=Enquete;Integrated Security=True"
       }
     },
@@ -93,7 +93,7 @@ No projeto EnqueteApi, é necessário a criação de um arquivo `launchSettings.
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "production",
+        "ASPNETCORE_ENVIRONMENT": "Production",
         "DATABASE_CONNECTION_STRING": "Data Source=TIAGO-INFOR13;Initial Catalog=Enquete;Integrated Security=True"
       }
     }
