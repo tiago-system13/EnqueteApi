@@ -6,7 +6,7 @@ namespace EnqueteApi.Core.Interfaces
     {
         Poll GetbyId(int id);
 
-        int Add(Poll poll);
+        Poll Add(Poll poll);
 
         Poll Update(Poll poll, Poll pollOld);
     }

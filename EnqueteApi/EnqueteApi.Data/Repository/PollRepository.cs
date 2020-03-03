@@ -18,11 +18,11 @@ namespace EnqueteApi.Data.Repository
             _context = context;
         }
 
-        public int Add(Poll poll)
+        public Poll Add(Poll poll)
         {
             _context.Polls.Add(poll);
             _context.SaveChanges();
-            return poll.Id;            
+            return poll;            
         }
 
         public Poll GetbyId(int id)

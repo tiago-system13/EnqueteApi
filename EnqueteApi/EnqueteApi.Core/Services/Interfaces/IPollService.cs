@@ -6,6 +6,6 @@ namespace EnqueteApi.Core.Services.Interfaces
     {
         Poll GetbyId(int id, bool calledByGetPollId);
 
-        int Add(Poll poll);
+        Poll Add(Poll poll);
     }
 }

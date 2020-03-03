@@ -14,7 +14,7 @@ namespace EnqueteApi.Core.Services
             _pollRepository = pollRepository;
         }
 
-        public int Add(Poll poll)
+        public Poll Add(Poll poll)
         {
             if (poll.Options != null)
             {

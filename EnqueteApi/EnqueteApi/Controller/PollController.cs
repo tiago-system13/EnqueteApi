@@ -69,7 +69,7 @@ namespace EnqueteApi.Controller
             try
             {
                 var result = _pollService.Add(_mapper.Map<Poll>(poll));
-                return Ok(result);
+                return Ok(_mapper.Map<PollReturnPostViewModel>(result));
             }
             catch (ArgumentException exception)
             {

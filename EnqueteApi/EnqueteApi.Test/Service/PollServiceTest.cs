@@ -22,7 +22,7 @@ namespace EnqueteApi.Test.Service
             var pollMock = PollTestMock.GetPollMock();
 
             pollRepositorioMock.Setup(s => s.GetbyId(It.IsAny<int>())).Returns(pollMock);           
-            pollRepositorioMock.Setup(s => s.Add(It.IsAny<Poll>())).Returns(pollMock.Id);
+            pollRepositorioMock.Setup(s => s.Add(It.IsAny<Poll>())).Returns(pollMock);
 
             pollServiceMock = new Mock<PollService>(pollRepositorioMock.Object);
         }
@@ -58,7 +58,7 @@ namespace EnqueteApi.Test.Service
             var result = pollServiceMock.Object.Add(pollDbMock);
 
             Assert.NotNull(result);
-            Assert.AreEqual(pollDbMock.Id, result);
+            Assert.AreEqual(pollDbMock.Id, result.Id);
 
             pollRepositorioMock.Verify(p => p.Add(It.IsAny<Poll>()), Times.Once);
         }

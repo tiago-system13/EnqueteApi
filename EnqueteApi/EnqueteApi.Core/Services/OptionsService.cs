@@ -33,7 +33,7 @@ namespace EnqueteApi.Core.Services
         private int CalculateVote(Option option)
         {
             
-            return option.Count == null ? 0 : (int)option.Count + 1;
+            return (option.Count == null ? 0 : (int)option.Count) + 1;
         }
     }
 }

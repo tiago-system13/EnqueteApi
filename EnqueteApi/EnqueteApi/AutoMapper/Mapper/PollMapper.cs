@@ -23,6 +23,9 @@ namespace EnqueteApi.AutoMapper.Mapper
                  .ForMember(h => h.Views, opt => opt.MapFrom(op => op.CountViews))
                  .ForMember(h => h.Votes, opt => opt.MapFrom(op => op.Options));
 
+            profile.CreateMap<Poll, PollReturnPostViewModel>()
+                .ForMember(h => h.PollId, opt => opt.MapFrom(op => op.Id));
+
             profile.CreateMap<OptionDto, Option>();
 
             profile.CreateMap<PollDto, Poll>();
