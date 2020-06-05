@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2-apsnetcore:runtme
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.402
 
 LABEL version="1.0" maintainer="Santana"
 LABEL description="Enquete Api .Net Core"
