@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2-sdk-alpine
+FROM microsoft/dotnet:2.2-apsnetcore:runtme
 
 LABEL version="1.0" maintainer="Santana"
 LABEL description="Enquete Api .Net Core"
