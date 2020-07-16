@@ -1,4 +1,5 @@
 ﻿using EnqueteApi.Core.Entity;
+using EnqueteApi.Core.Exceptions;
 using EnqueteApi.Core.Interfaces;
 using EnqueteApi.Core.Services;
 using EnqueteApi.Test.Config;
@@ -35,7 +36,7 @@ namespace EnqueteApi.Test.Service
 
             optionsRepositorioMock.Setup(s => s.GetbyId(It.IsAny<int>())).Returns((Option)null);
 
-            var ex = Assert.Throws<ArgumentException>(() => optionsServiceMock.Object.Update(optionsDbMock.Id));
+            var ex = Assert.Throws<BusinessException>(() => optionsServiceMock.Object.Update(optionsDbMock.Id));
             Assert.That(ex.Message, Is.EqualTo("Opção não encontrada!"));
             optionsRepositorioMock.Verify(p => p.Update(It.IsAny<Option>(), It.IsAny<Option>()), Times.Never);
         }

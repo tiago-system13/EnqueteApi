@@ -1,4 +1,5 @@
 ﻿using EnqueteApi.Core.Entity;
+using EnqueteApi.Core.Exceptions;
 using EnqueteApi.Core.Interfaces;
 using EnqueteApi.Core.Services.Interfaces;
 using System;
@@ -33,7 +34,7 @@ namespace EnqueteApi.Core.Services
 
             if (poll == null)
             {
-                throw new ArgumentException("Enquete não encontrada!");
+                throw new BusinessException("Enquete não encontrada!");
             }
 
             if (calledByGetPollId)

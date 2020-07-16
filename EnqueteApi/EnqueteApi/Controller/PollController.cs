@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using EnqueteApi.Core.Entity;
 using EnqueteApi.Core.Services.Interfaces;
@@ -35,64 +34,31 @@ namespace EnqueteApi.Controller
         [Route("{id:int}")]
         public ActionResult<List<PollViewModel>> Get(int id)
         {
-            try
-            {
-                var poll = _pollService.GetbyId(id, true);
-                return Ok(_mapper.Map<PollViewModel>(poll));
-            }
-            catch (ArgumentException exception)
-            {
-                return NotFound(exception.Message);
-            }
-
+            var poll = _pollService.GetbyId(id, true);
+            return Ok(_mapper.Map<PollViewModel>(poll));
         }
 
         [HttpGet]
         [Route("{id:int}/stats")]
         public ActionResult<List<PollViewsViewModel>> GetStats(int id)
         {
-            try
-            {
-                var poll = _pollService.GetbyId(id, false);
-                return Ok(_mapper.Map<PollViewsViewModel>(poll));
-            }
-            catch (ArgumentException exception)
-            {
-                return NotFound(exception.Message);
-            }
-
+            var poll = _pollService.GetbyId(id, false);
+            return Ok(_mapper.Map<PollViewsViewModel>(poll));
         }
 
         [HttpPost]
         public ActionResult Post([FromBody] PollDto poll)
         {
-            try
-            {
-                var result = _pollService.Add(_mapper.Map<Poll>(poll));
-                return Ok(_mapper.Map<PollReturnPostViewModel>(result));
-            }
-            catch (ArgumentException exception)
-            {
-                return NotFound(exception.Message);
-            }
-
+            var result = _pollService.Add(_mapper.Map<Poll>(poll));
+            return Ok(_mapper.Map<PollReturnPostViewModel>(result));
         }
 
         [HttpPost]
         [Route("{id:int}/vote")]
         public ActionResult PostVote(int id)
         {
-            try
-            {
-                var result = _optionsService.Update(id);
-
-                return Ok(_mapper.Map<OptionViewModel>(result));
-            }
-            catch (ArgumentException exception)
-            {
-                return NotFound(exception.Message);
-            }
-
+            var result = _optionsService.Update(id);
+            return Ok(_mapper.Map<OptionViewModel>(result));
         }
 
         #endregion

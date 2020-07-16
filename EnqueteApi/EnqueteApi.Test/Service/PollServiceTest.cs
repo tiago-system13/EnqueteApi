@@ -1,4 +1,5 @@
 ﻿using EnqueteApi.Core.Entity;
+using EnqueteApi.Core.Exceptions;
 using EnqueteApi.Core.Interfaces;
 using EnqueteApi.Core.Services;
 using EnqueteApi.Test.Config;
@@ -45,7 +46,7 @@ namespace EnqueteApi.Test.Service
         {
             pollRepositorioMock.Setup(s => s.GetbyId(It.IsAny<int>())).Returns((Poll)null);
             
-            var ex = Assert.Throws<ArgumentException>(() => pollServiceMock.Object.GetbyId(It.IsAny<int>(), It.IsAny<bool>()));
+            var ex = Assert.Throws<BusinessException>(() => pollServiceMock.Object.GetbyId(It.IsAny<int>(), It.IsAny<bool>()));
             Assert.That(ex.Message, Is.EqualTo("Enquete não encontrada!"));
 
             pollRepositorioMock.Verify(p => p.Add(It.IsAny<Poll>()), Times.Never);

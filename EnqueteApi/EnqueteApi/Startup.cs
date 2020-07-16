@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using AutoMapper;
+using bdiApi.Filtros;
 using EnqueteApi.AutoMapper;
 using EnqueteApi.Core.Constant;
 using EnqueteApi.Core.Interfaces;
@@ -18,6 +19,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
@@ -26,11 +28,17 @@ namespace EnqueteApi
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
+            services.AddMvc(options => options.Filters.Add(typeof(ExceptionHandlerFilterAttribute)))
              .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssembly(Assembly.Load("EnqueteApi")))
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                .AddJsonOptions(option => option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
@@ -57,8 +65,9 @@ namespace EnqueteApi
 
 
             #region Conecxão com banco
-            string connectionString = EnviromentConstant.DATABASE_CONNECTION_STRING;
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<EnqueteApiContext>(opt => opt.UseSqlServer(connectionString));
+
             #endregion
 
             #region AutoMapper

@@ -1,4 +1,5 @@
 ﻿using EnqueteApi.Core.Entity;
+using EnqueteApi.Core.Exceptions;
 using EnqueteApi.Core.Interfaces;
 using EnqueteApi.Core.Services.Interfaces;
 using System;
@@ -20,7 +21,7 @@ namespace EnqueteApi.Core.Services
 
             if (optionDb == null)
             {
-                throw new ArgumentException("Opção não encontrada!");
+                throw new BusinessException("Opção não encontrada!");
             }
 
             var optionOld = new Option(optionDb);

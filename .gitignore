@@ -12,3 +12,10 @@
 /EnqueteApi/EnqueteApi.Test/bin/Debug/netcoreapp2.2
 /EnqueteApi/EnqueteApi.Test/obj
 /.vs
+/EnqueteApi/obj
+/EnqueteApi/bin
+/EnqueteApi/EnqueteApi/bin
+/EnqueteApi/EnqueteApi.Core/bin
+/EnqueteApi/EnqueteApi.Data/bin
+/EnqueteApi/EnqueteApi.Test/bin
+/EnqueteApi/.vs

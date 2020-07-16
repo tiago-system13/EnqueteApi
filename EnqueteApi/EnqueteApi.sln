@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1022
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnqueteApi", "EnqueteApi\EnqueteApi.csproj", "{C56246E0-7E93-4C5E-BAD2-7C565527AAFC}"
 EndProject
@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4- Test", "4- Test", "{C9C0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnqueteApi.Core", "EnqueteApi.Core\EnqueteApi.Core.csproj", "{DCED2B9D-F593-4B82-BFE8-09A0711573B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnqueteApi.Data", "EnqueteApi.Data\EnqueteApi.Data.csproj", "{0AAF2727-C987-4B74-89EE-DB9E313953FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnqueteApi.Data", "EnqueteApi.Data\EnqueteApi.Data.csproj", "{0AAF2727-C987-4B74-89EE-DB9E313953FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnqueteApi.Test", "EnqueteApi.Test\EnqueteApi.Test.csproj", "{E154454B-2FC6-47CB-884F-7AAA4E649FB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnqueteApi.Test", "EnqueteApi.Test\EnqueteApi.Test.csproj", "{E154454B-2FC6-47CB-884F-7AAA4E649FB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

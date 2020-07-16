@@ -8,7 +8,7 @@ namespace EnqueteApi.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Poll> builder)
         {
-            builder.ToTable("Poll", "EnqueteApi");
+            builder.ToTable("Poll");
 
             builder.HasKey(x => x.Id);
 

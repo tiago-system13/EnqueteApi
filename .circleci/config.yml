@@ -24,5 +24,5 @@ jobs:
           command: |
             docker build -t EnqueteApi .
             echo docker login -u $DOCKER_LOGIN --password-stdin
-            docker tag boku herocod3r/EnqueteApi
-            docker push herocod3r/EnqueteApi
+            docker tag boku santana/EnqueteApi
+            docker push santana/EnqueteApi
